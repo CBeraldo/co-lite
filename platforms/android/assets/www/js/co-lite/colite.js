@@ -46,7 +46,6 @@
 
         vm.connect = function() {
             var config = { name: 'database.db', location: 'default', bgType: 1 };
-
             return $cordovaSQLite.openDB(config);
         }
 
@@ -61,6 +60,10 @@
         }
 
         vm.orm = {
+            drop: function() {
+                var query = ['DROP TABLE IF EXISTS', this.displayName].join('  ');
+                return vm.execute(query);
+            },
             create: function() {
                 var model = this;
                 var create = [];
@@ -140,7 +143,7 @@
             }
         };
 
-        vm.implement = function(name, base) {
+        vm.implement = function(name, base, force) {
             // implementação do modelo em um objeto.
             function model() {}
             Object.keys(base).forEach(function(prop) {
@@ -151,6 +154,7 @@
             model.displayName = name;
             model.base = base;
 
+            model.drop = vm.orm.drop;
             model.create = vm.orm.create;
             model.insert = vm.orm.insert;
             model.update = vm.orm.update;
@@ -158,6 +162,8 @@
             model.select = vm.orm.select;
 
             vm.deviceready(function() {
+                if (force)
+                    model.drop();
                 model.create();
             });
 
@@ -165,8 +171,6 @@
         };
 
         return {
-            // connect: vm.connect,
-            // execute: vm.execute,
             deviceready: vm.deviceready,
             implement: vm.implement
         }

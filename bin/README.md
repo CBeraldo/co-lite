@@ -107,8 +107,10 @@ mymodule.controller('teste', function($scope, $colite, Produto) {
 
 ### Versões ###
 
+* 1.0.8:
+    - Ajuste na função drop.
 * 1.0.7:
-    - função implement recebe parametro {force} (recria tabela).
+    - Função implement recebe parametro {force} (recria tabela).
 * 1.0.6:
     - Atualização da documentação.
 * 1.0.5:

@@ -14,55 +14,17 @@ colite.config(function($locationProvider, $compileProvider) {
 colite.service("Produto", function($colite, Colite) {
     var produto;
 
-    produto = $colite.implement("Pedido", {
+    produto = $colite.implement("Produto", {
         id: {
-            type: INTEGER,
+            type: Colite.INTEGER,
             primaryKey: true
         },
-        de: {
+        descricao: {
             type: Colite.STRING
         },
-        para: {
-            type: Colite.STRING
-        },
-        endereco: {
-            type: Colite.STRING
-        },
-        produto: {
-            type: Colite.STRING
-        },
-        telefone_contato_de: {
-            type: Colite.STRING,
-            allowNulls: true
-        },
-        telefone_contato_para: {
-            type: Colite.STRING,
-            allowNulls: true
-        },
-        observacoes: {
-            type: Colite.STRING,
-            allowNulls: true
-        },
-        data_entrega: {
-            type: Colite.DATETIME,
-            allowNulls: true
-        },
-        status: {
-            type: Colite.STRING,
-            allowNulls: true
-        },
-        data_criacao: {
-            type: Colite.DATETIME,
-            allowNulls: true
-        },
-        data_alteracao: {
-            type: Colite.DATETIME,
-            allowNulls: true
-        },
-        data_exclusao: {
-            type: Colite.DATETIME,
-            allowNulls: true
-        },
+        valor: {
+            type: Colite.DECIMAL
+        }
     }, true);
 
     return produto;
@@ -87,12 +49,13 @@ colite.controller('teste', function($scope, $colite, Produto) {
                 // Produto.insert(produto).then(function() {}).catch(function(error) { $scope.info = error.message; });
                 // Produto.update(produto).then(function() {}).catch(function(error) { $scope.info = error.message; });
                 // Produto.delete(produto.id).then(function() { $scope.info = 'DELETED!'; }).catch(function(error) { $scope.info = error.message; });
-            } catch (error) {
-                // $scope.info = error.message;
-            }
-        });
 
-        $scope.$apply(function() {
+                // Produto.create();
+                // Produto.drop();
+            } catch (error) {
+                $scope.info = error.message;
+            }
+
             Produto
                 .select()
                 .then(function(data) {

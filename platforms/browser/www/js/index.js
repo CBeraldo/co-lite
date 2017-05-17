@@ -14,48 +14,17 @@ colite.config(function($locationProvider, $compileProvider) {
 colite.service("Produto", function($colite, Colite) {
     var produto;
 
-    produto = $colite.implement("Pedido", {
-        de: {
-            type: Colite.STRING,
-            allowNulls: false
+    produto = $colite.implement("Produto", {
+        id: {
+            type: INTEGER,
+            primaryKey: true
         },
-        para: {
-            type: Colite.STRING,
-            allowNulls: false
-        },
-        endereco: {
-            type: Colite.STRING,
-            allowNulls: false
-        },
-        produto: {
-            type: Colite.STRING,
-            allowNulls: false
-        },
-        telefone_contato_de: {
+        descricao: {
             type: Colite.STRING
         },
-        telefone_contato_para: {
-            type: Colite.STRING
-        },
-        observacoes: {
-            type: Colite.STRING
-        },
-        data_entrega: {
-            type: Colite.DATETIME,
-            allowNulls: false
-        },
-        status: {
-            type: Colite.STRING
-        },
-        data_criacao: {
-            type: Colite.DATETIME
-        },
-        data_alteracao: {
-            type: Colite.DATETIME
-        },
-        data_exclusao: {
-            type: Colite.DATETIME
-        },
+        valor: {
+            type: Colite.DECIMAL
+        }
     });
 
     return produto;
@@ -80,8 +49,10 @@ colite.controller('teste', function($scope, $colite, Produto) {
                 // Produto.insert(produto).then(function() {}).catch(function(error) { $scope.info = error.message; });
                 // Produto.update(produto).then(function() {}).catch(function(error) { $scope.info = error.message; });
                 // Produto.delete(produto.id).then(function() { $scope.info = 'DELETED!'; }).catch(function(error) { $scope.info = error.message; });
+
+                $scope.info = Produto.drop();
             } catch (error) {
-                // $scope.info = error.message;
+                $scope.info = error.message;
             }
         });
 

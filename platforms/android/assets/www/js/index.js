@@ -20,14 +20,12 @@ colite.service("Produto", function($colite, Colite) {
             primaryKey: true
         },
         descricao: {
-            type: Colite.STRING,
-            allowNulls: false
+            type: Colite.STRING
         },
         valor: {
-            type: Colite.DECIMAL,
-            allowNulls: false
+            type: Colite.DECIMAL
         }
-    });
+    }, true);
 
     return produto;
 });
@@ -51,12 +49,13 @@ colite.controller('teste', function($scope, $colite, Produto) {
                 // Produto.insert(produto).then(function() {}).catch(function(error) { $scope.info = error.message; });
                 // Produto.update(produto).then(function() {}).catch(function(error) { $scope.info = error.message; });
                 // Produto.delete(produto.id).then(function() { $scope.info = 'DELETED!'; }).catch(function(error) { $scope.info = error.message; });
-            } catch (error) {
-                // $scope.info = error.message;
-            }
-        });
 
-        $scope.$apply(function() {
+                // Produto.create();
+                // Produto.drop();
+            } catch (error) {
+                $scope.info = error.message;
+            }
+
             Produto
                 .select()
                 .then(function(data) {

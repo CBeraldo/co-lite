@@ -46,7 +46,6 @@
 
         vm.connect = function() {
             var config = { name: 'database.db', location: 'default', bgType: 1 };
-
             return $cordovaSQLite.openDB(config);
         }
 
