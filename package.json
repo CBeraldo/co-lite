@@ -1,27 +1,27 @@
 {
-  "name": "co-lite",
-  "version": "1.0.0",
-  "description": "ORM - SQLite with angularjs.",
-  "main": "js/colite.min.js",
-  "dependencies": {
-    "cordova-plugin-whitelist": "1",
-    "gulp-coffee": "^2.3.4",
-    "sqlite": "^2.7.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "orm;",
-    "sqlite;",
-    "cordova;"
-  ],
-  "author": "cberaldo.desenvolvimento@outlook.com",
-  "license": "ISC",
-  "cordova": {
-    "plugins": {
-      "cordova-plugin-whitelist": {}
+    "name": "co-lite",
+    "version": "1.0.0",
+    "description": "ORM - SQLite with angularjs.",
+    "main": "js/colite.min.js",
+    "dependencies": {
+        "cordova-plugin-whitelist": "1",
+        "gulp-coffee": "^2.3.4",
+        "sqlite": "^2.7.0"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "orm;",
+        "sqlite;",
+        "cordova;"
+    ],
+    "author": "cberaldo.desenvolvimento@outlook.com",
+    "license": "BSD",
+    "cordova": {
+        "plugins": {
+            "cordova-plugin-whitelist": {}
+        }
     }
-  }
 }

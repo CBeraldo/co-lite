@@ -1,6 +1,6 @@
 {
     "name": "co-lite",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "ORM - SQLite with angularjs.",
     "main": "js/colite.min.js",
     "dependencies": {
@@ -17,7 +17,7 @@
         "cordova;"
     ],
     "author": "cberaldo.desenvolvimento@outlook.com",
-    "license": "ISC",
+    "license": "BSD",
     "cordova": {
         "plugins": {
             "cordova-plugin-whitelist": {}
