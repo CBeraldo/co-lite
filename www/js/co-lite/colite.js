@@ -44,6 +44,8 @@
     function Colite($cordovaSQLite) {
         var vm = this;
 
+        vm.isDeviceReady = false;
+
         vm.connect = function() {
             var config = { name: 'database.db', location: 'default', bgType: 1 };
             return $cordovaSQLite.openDB(config);
@@ -54,9 +56,14 @@
         }
 
         vm.deviceready = function(callback) {
-            document.addEventListener('deviceready', function() {
+            // caso dispositivo já esteja pronto não adiciona EventListener, apenas executa.
+            if (vm.isDeviceReady) {
                 callback();
-            }, false);
+            } else {
+                document.addEventListener('deviceready', function() {
+                    callback();
+                }, false);
+            }
         }
 
         vm.orm = {
