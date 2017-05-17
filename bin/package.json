@@ -24,18 +24,5 @@
         "plugins": {
             "cordova-plugin-whitelist": {}
         }
-    },
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "hooks",
-        "platforms",
-        "plugins",
-        "www",
-        "config.xml",
-        "dubug.log",
-        "gulpfile.js",
-        ".gitignore"
-    ]
+    }
 }
