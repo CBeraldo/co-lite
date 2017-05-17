@@ -1,15 +1,13 @@
 {
     "name": "co-lite",
-    "version": "1.0.0",
+    "version": "1.0.5",
     "description": "ORM - SQLite for cordova with angularjs.",
-    "main": "js/colite.min.js",
+    "main": "colite.min.js",
     "dependencies": {
-        "cordova-plugin-whitelist": "1",
-        "sqlite": "^2.7.0"
+        "sqlite": "^2.7.0",
+        "cordova-plugin-whitelist": "1"
     },
-    "devDependencies": {
-        "gulp-coffee": "^2.3.4"
-    },
+    "devDependencies": {},
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -26,5 +24,17 @@
         "plugins": {
             "cordova-plugin-whitelist": {}
         }
-    }
+    },
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "hooks",
+        "platforms",
+        "plugins",
+        "www",
+        "config.xml",
+        "dubug.log",
+        "gulpfile.js"
+    ]
 }

@@ -1,0 +1,14 @@
+{
+  "name": "co-lite",
+  "homepage": "https://github.com/CBeraldo/co-lite",
+  "_release": "2a2450221f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "2a2450221f5944c84849856d5667650fa36bf806"
+  },
+  "_source": "https://github.com/CBeraldo/co-lite.git",
+  "_target": "*",
+  "_originalSource": "co-lite",
+  "_direct": true
+}

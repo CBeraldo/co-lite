@@ -1,0 +1,29 @@
+{
+    "name": "co-lite",
+    "description": "ORM - SQLite for cordova with angularjs.",
+    "main": "colite.min.js",
+    "authors": [
+        "cberaldo.desenvolvimento@outlook.com"
+    ],
+    "license": "BSD",
+    "keywords": [
+        "orm",
+        "sqlite",
+        "cordova",
+        "angularjs",
+        "phonegap"
+    ],
+    "homepage": "https://github.com/CBeraldo/co-lite",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "hooks",
+        "platforms",
+        "plugins",
+        "www",
+        "config.xml",
+        "dubug.log",
+        "gulpfile.js"
+    ]
+}

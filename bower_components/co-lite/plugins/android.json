@@ -1,0 +1,18 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "br.com.venus"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "br.com.venus"
+        }
+    },
+    "dependent_plugins": {}
+}

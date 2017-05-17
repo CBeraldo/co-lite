@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html ng-app="venus">
+
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <title>Hello World</title>
+
+    <!--<base href="/android_asset/www/">-->
+    <base href="/">
+</head>
+
+<body>
+    <div ng-controller="teste">
+        <h1>Apache Cordova</h1>
+        <div>
+            <label for="teste">{{info}}</label>
+
+            <ul>
+                <!-- | filter:filtro -->
+                <li ng-repeat="item in lista">
+                    {{item.campo1}} <br/> {{item.campo2}} <br/> {{item.campo3}} <br/>
+                </li>
+            </ul>
+
+        </div>
+
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/ng-cordova.min.js"></script>
+        <script type="text/javascript" src="js/venus.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </div>
+</body>
+
+</html>
