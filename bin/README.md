@@ -4,20 +4,6 @@
 
 * ORM SQLite simples para cordova utilizando AngularJS.
 
-### Versões ###
-
-* 1.0.4:
-    - Atualização da documentação.
-    - Atualização da licença de uso.
-* 1.0.3:
-    - Atualização da documentação.
-* 1.0.2:
-    - Disponibilização da documentação.
-* 1.0.1:
-    - Otimização do diretório de arquivos.
-* 1.0.0:
-    - Funcionalidades básicas: insert, update, delete, select, create (table) e implementação de objetos.
-
 ### Por onde começar? ###
 
 * npm init
@@ -91,6 +77,20 @@ mymodule.controller('teste', function($scope, $colite, Produto) {
 ### Com quem falar? ###
 
 * [Caio Beraldo](https://cberaldodesenvolvimento.wordpress.com/)
-* [GitHub](https://github.com/CBeraldo/co-lite)
 * cberaldo.desenvolvimento@outlook.com
 * caio.beraldo@fatec.sp.gov.br
+* [GitHub](https://github.com/CBeraldo/co-lite)
+
+### Versões ###
+
+* 1.0.4:
+    - Atualização da documentação.
+    - Atualização da licença de uso.
+* 1.0.3:
+    - Atualização da documentação.
+* 1.0.2:
+    - Disponibilização da documentação.
+* 1.0.1:
+    - Otimização do diretório de arquivos.
+* 1.0.0:
+    - Funcionalidades básicas: insert, update, delete, select, create (table) e implementação de objetos.
