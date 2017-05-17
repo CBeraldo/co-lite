@@ -11,15 +11,27 @@
             });
         };
     }
+    if (!String.prototype.repeat) {
+        String.prototype.repeat = function(length) {
+            var str = '';
+            var repeat = this;
 
-    var venus = angular
-        .module('ngVenus', ['ngCordova'])
+            for (var i = 0; i < length; i++) {
+                str = str + repeat;
+            }
+
+            return str;
+        };
+    }
+
+    var colite = angular
+        .module('Colite', ['ngCordova'])
         // serviços 
-        .service('$venus', Venus)
+        .service('$colite', Colite)
         // constantes 
-        .constant('Venus', {
+        .constant('Colite', {
             STRING: "STRING",
-            INTEGER: "INT",
+            INTEGER: "INTEGER",
             DATE: "DATE",
             DATETIME: "DATETIME",
             BIGINT: "BIGINT",
@@ -27,9 +39,9 @@
             TEXT: "TEXT"
         });
 
-    Venus.$inject = ['$cordovaSQLite'];
+    Colite.$inject = ['$cordovaSQLite'];
 
-    function Venus($cordovaSQLite) {
+    function Colite($cordovaSQLite) {
         var vm = this;
 
         vm.connect = function() {
@@ -73,52 +85,53 @@
                     create.push(prop);
                 });
 
-                return vm.execute(['CREATE TABLE IF NOT EXISTS', this.displayName, '(', create.join(', '), ')'].join('  '));
+                var query = ['CREATE TABLE IF NOT EXISTS', this.displayName, '(', create.join(', '), ')'].join('  ');
+                console.log(query);
+
+                return vm.execute(query);
             },
             insert: function(object) {
-                // var model = this;
+                var model = this;
+                var insert = [];
+                var values = [];
 
-                // var insert = [];
-                // var values = [];
-
-                // Object.keys(model.prototype).forEach(function(key, value) {
-                //     if (key != 'id') {
-                //         insert.push(key); // prop
-                //         values.push(object[key]); // value
-                //     }
-                // });
-
-                // var query = ' insert into {0} ( {1} ) values ( ? {2} ) '.format(
-                //     model.displayName,
-                //     insert.join(', '),
-                //     ', ?'.repeat(values.length - 1));
-
-                // alert('OKA SODKWQOKOQK');
-                return 'OKA SODKWQOKOQK';
-                // return vm.execute(query, values);
-            },
-            update: function(model, object) {
-                var update = '';
-                var params = [];
-
-                Object.keys(object).forEach(function(key, value) {
-                    update += key + ' = ? , ';
-                    params.push(object[key]);
+                Object.keys(model.prototype).forEach(function(key, value) {
+                    if (key != 'id') {
+                        insert.push(key); // prop
+                        values.push(object[key]); // value
+                    }
                 });
 
-                params.push(object.id);
-                update = update.slice(0, update.length - 3);
+                var query = ' insert into {0} ( {1} ) values ( ? {2} ) '.format(
+                    model.displayName,
+                    insert.join(', '),
+                    ', ?'.repeat(values.length - 1));
 
-                var query = ' update {0} set {1} where id = ? '.format(model.prototype.constructor.name, update);
-
-                return vm.execute(query, params);
+                return vm.execute(query, values);
             },
-            delete: function(model, id) {
-                var query = ' delete from {0} where id = ? '.format(model.prototype.constructor.name);
+            update: function(object) {
+                var model = this;
+                var update = [];
+                var values = [];
+
+                Object.keys(model.prototype).forEach(function(key, value) {
+                    if (key != 'id') {
+                        update.push(key + ' = ?'); // prop
+                        values.push(object[key]); // value
+                    }
+                });
+
+                values.push(object.id);
+                var query = ' update {0} set {1} where id = ? '.format(model.displayName, update.join(', '));
+                return vm.execute(query, values);
+            },
+            delete: function(id) {
+                var model = this;
+                var query = ' delete from {0} where id = ? '.format(model.displayName);
                 return vm.execute(query, [id]);
             },
             select: function(id) {
-                var query = ' select * from {0} '.format([this.prototype.constructor.name]);
+                var query = ' select * from {0} '.format([this.displayName]);
 
                 if (id) {
                     query = query + ' where id = ? ';
@@ -154,8 +167,6 @@
         };
 
         return {
-            // connect: vm.connect,
-            // execute: vm.execute,
             deviceready: vm.deviceready,
             implement: vm.implement
         }

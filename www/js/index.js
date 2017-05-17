@@ -14,20 +14,56 @@ colite.config(function($locationProvider, $compileProvider) {
 colite.service("Produto", function($colite, Colite) {
     var produto;
 
-    produto = $colite.implement("Produto", {
+    produto = $colite.implement("Pedido", {
         id: {
-            type: Colite.INTEGER,
+            type: INTEGER,
             primaryKey: true
         },
-        descricao: {
-            type: Colite.STRING,
-            allowNulls: false
+        de: {
+            type: Colite.STRING
         },
-        valor: {
-            type: Colite.DECIMAL,
-            allowNulls: false
-        }
-    });
+        para: {
+            type: Colite.STRING
+        },
+        endereco: {
+            type: Colite.STRING
+        },
+        produto: {
+            type: Colite.STRING
+        },
+        telefone_contato_de: {
+            type: Colite.STRING,
+            allowNulls: true
+        },
+        telefone_contato_para: {
+            type: Colite.STRING,
+            allowNulls: true
+        },
+        observacoes: {
+            type: Colite.STRING,
+            allowNulls: true
+        },
+        data_entrega: {
+            type: Colite.DATETIME,
+            allowNulls: true
+        },
+        status: {
+            type: Colite.STRING,
+            allowNulls: true
+        },
+        data_criacao: {
+            type: Colite.DATETIME,
+            allowNulls: true
+        },
+        data_alteracao: {
+            type: Colite.DATETIME,
+            allowNulls: true
+        },
+        data_exclusao: {
+            type: Colite.DATETIME,
+            allowNulls: true
+        },
+    }, true);
 
     return produto;
 });

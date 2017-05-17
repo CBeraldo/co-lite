@@ -1,8 +1,8 @@
 'use strict';
 
-var venus = angular.module('venus', ['ngCordova', 'ngVenus']);
+var colite = angular.module('colite', ['ngCordova', 'Colite']);
 
-venus.config(function($locationProvider, $compileProvider) {
+colite.config(function($locationProvider, $compileProvider) {
     $locationProvider
         .html5Mode(true) // html 5 (base)
         .hashPrefix('*'); // remove o # da url
@@ -11,50 +11,107 @@ venus.config(function($locationProvider, $compileProvider) {
 })
 
 // disponibilização do objeto em controllers angularjs.
-venus.service("Produto", function($venus, Venus) {
+colite.service("Produto", function($colite, Colite) {
     var produto;
 
-    produto = $venus.implement("Produto", {
-        id: {
-            type: Venus.INTEGER,
-            primaryKey: true
-        },
-        descricao: {
-            type: Venus.STRING,
+    produto = $colite.implement("Pedido", {
+        de: {
+            type: Colite.STRING,
             allowNulls: false
         },
-        valor: {
-            type: Venus.DECIMAL,
+        para: {
+            type: Colite.STRING,
             allowNulls: false
-        }
+        },
+        endereco: {
+            type: Colite.STRING,
+            allowNulls: false
+        },
+        produto: {
+            type: Colite.STRING,
+            allowNulls: false
+        },
+        telefone_contato_de: {
+            type: Colite.STRING
+        },
+        telefone_contato_para: {
+            type: Colite.STRING
+        },
+        observacoes: {
+            type: Colite.STRING
+        },
+        data_entrega: {
+            type: Colite.DATETIME,
+            allowNulls: false
+        },
+        status: {
+            type: Colite.STRING
+        },
+        data_criacao: {
+            type: Colite.DATETIME
+        },
+        data_alteracao: {
+            type: Colite.DATETIME
+        },
+        data_exclusao: {
+            type: Colite.DATETIME
+        },
     });
-
-    // $venus.deviceready(function() {  });
 
     return produto;
 });
 
-venus.controller('teste', function($scope, $venus, Produto) {
+colite.controller('main.controller', function($scope, $colite, Produto) {
+
+});
+
+colite.controller('teste', function($scope, $colite, Produto) {
     $scope.info = '';
     $scope.lista = [];
 
-    $venus.deviceready(function() {
+    $colite.deviceready(function() {
         $scope.$apply(function() {
-            // $scope.info = 'OK';
-            // var produto = new Produto();
-            // produto.descricao = 'aisod nwqoifniwqo';
-            // produto.valor = 19.25;
-            // Produto.insert(produto)
-            $scope.info = 'as doqnwiqofniwqofn iwqondo';
+            try {
+                // var produto = new Produto();
+                // produto.id = 2;
+                // produto.descricao = 'PRODUTO 002';
+                // produto.valor = 80.0;
+
+                // Produto.insert(produto).then(function() {}).catch(function(error) { $scope.info = error.message; });
+                // Produto.update(produto).then(function() {}).catch(function(error) { $scope.info = error.message; });
+                // Produto.delete(produto.id).then(function() { $scope.info = 'DELETED!'; }).catch(function(error) { $scope.info = error.message; });
+            } catch (error) {
+                // $scope.info = error.message;
+            }
         });
 
-        $scope.lista = [
-            { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '0831' },
-            { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '2781' },
-            { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '4531' },
-            { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '4315' },
-            { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '2431' },
-            { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '1311' }
-        ];
+        $scope.$apply(function() {
+            Produto
+                .select()
+                .then(function(data) {
+                    var rows = [];
+                    for (var i = 0; i < data.rows.length; i++) {
+                        rows.push(data.rows.item(i));
+                    }
+
+                    $scope.lista = rows;
+                })
+                .catch(function(error) {
+                    $scope.info = error.message;
+                });
+        });
+        // .then(function(data) {
+        //     // LxNotificationService.success(res.rows.item(i));
+        //     $scope.info = data;
+        // });
+
+        // $scope.lista = [
+        //     { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '0831' },
+        //     { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '2781' },
+        //     { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '4531' },
+        //     { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '4315' },
+        //     { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '2431' },
+        //     { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '1311' }
+        // ];
     });
 });

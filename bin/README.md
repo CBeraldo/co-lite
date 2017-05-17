@@ -107,6 +107,10 @@ mymodule.controller('teste', function($scope, $colite, Produto) {
 
 ### Versões ###
 
+* 1.0.7:
+    - função implement recebe parametro {force} (recria tabela).
+* 1.0.6:
+    - Atualização da documentação.
 * 1.0.5:
     - Atualização da documentação.
 * 1.0.4:
