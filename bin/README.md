@@ -7,6 +7,9 @@
 ### Por onde começar? ###
 
 * npm init
+* npm install -g bower
+* bower install --save angular
+* bower install --save ngCordova
 * npm install --save co-lite
 * npm install
 
@@ -74,6 +77,27 @@ mymodule.controller('teste', function($scope, $colite, Produto) {
 });
 ```
 
+* Vínculo do controlador com o HTML.
+
+```
+<html ng-app="mymodule">
+    <body>
+        <div ng-controller="teste">
+        </div>
+
+        <!-- dependências -->
+        <script type="text/javascript" src="angular.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="ng-cordova.min.js"></script>
+
+        <!-- co-lite -->
+        <script type="text/javascript" src="colite.min.js"></script>
+
+        <!-- scripts customizados -->
+    </body>
+</html>
+```
+
 ### Com quem falar? ###
 
 * [Caio Beraldo](https://cberaldodesenvolvimento.wordpress.com/)
@@ -83,6 +107,8 @@ mymodule.controller('teste', function($scope, $colite, Produto) {
 
 ### Versões ###
 
+* 1.0.5:
+    - Atualização da documentação.
 * 1.0.4:
     - Atualização da documentação.
     - Atualização da licença de uso.
