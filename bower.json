@@ -24,6 +24,7 @@
         "www",
         "config.xml",
         "dubug.log",
-        "gulpfile.js"
+        "gulpfile.js",
+        ".gitignore"
     ]
 }
