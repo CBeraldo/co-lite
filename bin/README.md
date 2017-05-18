@@ -107,6 +107,8 @@ mymodule.controller('teste', function($scope, $colite, Produto) {
 
 ### Versões ###
 
+* 1.0.11:
+    - Bugfix.
 * 1.0.10:
     - Ajuste na implementação da função {deviceready}.
 * 1.0.9:

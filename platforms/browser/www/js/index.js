@@ -30,9 +30,7 @@ colite.service("Produto", function($colite, Colite) {
     return produto;
 });
 
-colite.controller('main.controller', function($scope, $colite, Produto) {
-
-});
+colite.controller('main.controller', function() {});
 
 colite.controller('teste', function($scope, $colite, Produto) {
     $scope.info = '';
@@ -70,18 +68,5 @@ colite.controller('teste', function($scope, $colite, Produto) {
                     $scope.info = error.message;
                 });
         });
-        // .then(function(data) {
-        //     // LxNotificationService.success(res.rows.item(i));
-        //     $scope.info = data;
-        // });
-
-        // $scope.lista = [
-        //     { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '0831' },
-        //     { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '2781' },
-        //     { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '4531' },
-        //     { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '4315' },
-        //     { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '2431' },
-        //     { campo1: 'sand ioqnfionw fioqw', campo2: 's idnqwofinq', campo3: '1311' }
-        // ];
     });
 });

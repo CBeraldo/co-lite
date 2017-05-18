@@ -66,6 +66,12 @@
             }
         }
 
+        console.log('Ready: ' + vm.isDeviceReady);
+        vm.deviceready(function(callback) {
+            vm.isDeviceReady = true;
+            console.log('Ready: ' + vm.isDeviceReady);
+        });
+
         vm.orm = {
             drop: function() {
                 var query = ['DROP TABLE IF EXISTS', this.displayName].join('  ');

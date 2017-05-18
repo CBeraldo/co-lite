@@ -1,6 +1,8 @@
 (function() {
     'use strict'
 
+    var isBrowser = (cordova.platformId != 'browser');
+
     if (!String.prototype.format) {
         String.prototype.format = function() {
             var args = arguments;
@@ -39,20 +41,37 @@
             TEXT: "TEXT"
         });
 
-    Colite.$inject = ['$cordovaSQLite'];
+    console.log(cordova.platformId);
+    if (isBrowser) {
+        Colite.$inject = ['$cordovaSQLite'];
+    }
 
-    function Colite($cordovaSQLite) {
+    function Colite() {
         var vm = this;
 
         vm.isDeviceReady = false;
 
         vm.connect = function() {
-            var config = { name: 'database.db', location: 'default', bgType: 1 };
-            return $cordovaSQLite.openDB(config);
+            if (isBrowser) {
+                var config = { name: 'database.db', location: 'default', bgType: 1 };
+                return $cordovaSQLite.openDB(config);
+            } else {
+                return undefined;
+            }
         }
 
         vm.execute = function(query, values) {
-            return $cordovaSQLite.execute(vm.connect(), query, values);
+            if (isBrowser) {
+                return $cordovaSQLite.execute(vm.connect(), query, values);
+            } else {
+                return {
+                    then: function() {
+                        return {
+                            catch: function() {}
+                        }
+                    }
+                };
+            }
         }
 
         vm.deviceready = function(callback) {
