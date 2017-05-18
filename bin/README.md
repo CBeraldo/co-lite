@@ -110,6 +110,10 @@ mymodule.controller('teste', function($scope, $colite, $timeout, Produto) {
 
 ### Versões ###
 
+* 1.0.14:
+    - Bugfix.
+* 1.0.13:
+    - Atualização da documentação.
 * 1.0.12:
     - Atualização da documentação.
 * 1.0.11:

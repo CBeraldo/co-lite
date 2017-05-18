@@ -42,7 +42,7 @@
 
     Colite.$inject = ['$cordovaSQLite'];
 
-    function Colite() {
+    function Colite($cordovaSQLite) {
         var vm = this;
 
         vm.connect = function() {
