@@ -1,6 +1,6 @@
 {
     "name": "co-lite",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "description": "ORM - SQLite for cordova with angularjs.",
     "main": "colite.min.js",
     "dependencies": {

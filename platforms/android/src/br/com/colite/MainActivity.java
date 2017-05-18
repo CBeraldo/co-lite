@@ -17,7 +17,7 @@
        under the License.
  */
 
-package br.com.venus;
+package br.com.colite;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

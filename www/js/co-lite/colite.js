@@ -1,7 +1,6 @@
+/** versão 1.0.13 */
 (function() {
     'use strict'
-
-    var isBrowser = (cordova.platformId != 'browser');
 
     if (!String.prototype.format) {
         String.prototype.format = function() {
@@ -41,53 +40,25 @@
             TEXT: "TEXT"
         });
 
-    console.log(cordova.platformId);
-    if (isBrowser) {
-        Colite.$inject = ['$cordovaSQLite'];
-    }
+    Colite.$inject = ['$cordovaSQLite'];
 
     function Colite() {
         var vm = this;
 
-        vm.isDeviceReady = false;
-
         vm.connect = function() {
-            if (isBrowser) {
-                var config = { name: 'database.db', location: 'default', bgType: 1 };
-                return $cordovaSQLite.openDB(config);
-            } else {
-                return undefined;
-            }
+            var config = { name: 'database.db', location: 'default', bgType: 1 };
+            return $cordovaSQLite.openDB(config);
         }
 
         vm.execute = function(query, values) {
-            if (isBrowser) {
-                return $cordovaSQLite.execute(vm.connect(), query, values);
-            } else {
-                return {
-                    then: function() {
-                        return {
-                            catch: function() {}
-                        }
-                    }
-                };
-            }
+            return $cordovaSQLite.execute(vm.connect(), query, values);
         }
 
         vm.deviceready = function(callback) {
-            // caso dispositivo já esteja pronto não adiciona EventListener, apenas executa.
-            if (vm.isDeviceReady) {
+            document.addEventListener('deviceready', function() {
                 callback();
-            } else {
-                document.addEventListener('deviceready', function() {
-                    callback();
-                }, false);
-            }
-        }
-
-        vm.deviceready(function(callback) {
-            vm.isDeviceReady = true;
-        });
+            }, false);
+        };
 
         vm.orm = {
             drop: function() {

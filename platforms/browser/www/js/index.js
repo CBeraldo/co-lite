@@ -1,6 +1,6 @@
 'use strict';
 
-var colite = angular.module('colite', ['ngCordova', 'Colite']);
+var colite = angular.module('colite', ['ngCordova', 'ngDeviceReady', 'Colite']);
 
 colite.config(function($locationProvider, $compileProvider) {
     $locationProvider
@@ -8,7 +8,7 @@ colite.config(function($locationProvider, $compileProvider) {
         .hashPrefix('*'); // remove o # da url
     $compileProvider
         .aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
-})
+});
 
 // disponibilização do objeto em controllers angularjs.
 colite.service("Produto", function($colite, Colite) {
@@ -32,41 +32,43 @@ colite.service("Produto", function($colite, Colite) {
 
 colite.controller('main.controller', function() {});
 
-colite.controller('teste', function($scope, $colite, Produto) {
-    $scope.info = '';
+colite.controller('teste', function($scope, $colite, $deviceready, Produto) {
+    $scope.info = 'sa dwqdwq dqw';
     $scope.lista = [];
 
-    $colite.deviceready(function() {
-        $scope.$apply(function() {
-            try {
-                // var produto = new Produto();
-                // produto.id = 2;
-                // produto.descricao = 'PRODUTO 002';
-                // produto.valor = 80.0;
+    // $deviceready(function() {
+    //     alert('deviceready');
+    //     var produto = new Produto();
+    //     // produto.id = 2;
+    //     produto.descricao = 'PRODUTO 002';
+    //     produto.valor = 80.0;
 
-                // Produto.insert(produto).then(function() {}).catch(function(error) { $scope.info = error.message; });
-                // Produto.update(produto).then(function() {}).catch(function(error) { $scope.info = error.message; });
-                // Produto.delete(produto.id).then(function() { $scope.info = 'DELETED!'; }).catch(function(error) { $scope.info = error.message; });
+    //     Produto.insert(produto)
+    //         .then(function() {
+    //             $scope.info = 'inserted';
+    //         })
+    //         .catch(function(error) {
+    //             $scope.info = error.message;
+    //         });
 
-                // Produto.create();
-                // Produto.drop();
-            } catch (error) {
-                $scope.info = error.message;
-            }
+    //     // Produto.update(produto).then(function() {}).catch(function(error) { $scope.info = error.message; });
+    //     // Produto.delete(produto.id).then(function() { $scope.info = 'DELETED!'; }).catch(function(error) { $scope.info = error.message; });
 
-            Produto
-                .select()
-                .then(function(data) {
-                    var rows = [];
-                    for (var i = 0; i < data.rows.length; i++) {
-                        rows.push(data.rows.item(i));
-                    }
+    //     // Produto.create();
+    //     // Produto.drop();
 
-                    $scope.lista = rows;
-                })
-                .catch(function(error) {
-                    $scope.info = error.message;
-                });
-        });
-    });
+    //     Produto
+    //         .select()
+    //         .then(function(data) {
+    //             var rows = [];
+    //             for (var i = 0; i < data.rows.length; i++) {
+    //                 rows.push(data.rows.item(i));
+    //             }
+
+    //             $scope.lista = rows;
+    //         })
+    //         .catch(function(error) {
+    //             $scope.info = error.message;
+    //         });
+    // });
 });
