@@ -16,7 +16,7 @@ colite.service("Produto", function($colite, Colite) {
 
     produto = $colite.implement("Produto", {
         id: {
-            type: INTEGER,
+            type: Colite.INTEGER,
             primaryKey: true
         },
         descricao: {
@@ -25,7 +25,7 @@ colite.service("Produto", function($colite, Colite) {
         valor: {
             type: Colite.DECIMAL
         }
-    });
+    }, true);
 
     return produto;
 });
@@ -50,13 +50,12 @@ colite.controller('teste', function($scope, $colite, Produto) {
                 // Produto.update(produto).then(function() {}).catch(function(error) { $scope.info = error.message; });
                 // Produto.delete(produto.id).then(function() { $scope.info = 'DELETED!'; }).catch(function(error) { $scope.info = error.message; });
 
-                $scope.info = Produto.drop();
+                // Produto.create();
+                // Produto.drop();
             } catch (error) {
                 $scope.info = error.message;
             }
-        });
 
-        $scope.$apply(function() {
             Produto
                 .select()
                 .then(function(data) {
