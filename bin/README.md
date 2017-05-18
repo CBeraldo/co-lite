@@ -49,29 +49,32 @@ mymodule.service("Produto", function($colite, Colite) {
 * Utilização em controlatores angularjs.
 
 ```
-mymodule.controller('teste', function($scope, $colite, Produto) {
+mymodule.controller('teste', function($scope, $colite, $timeout, Produto) {
     $colite.deviceready(function() {
-        $scope.$apply(function() {
-            try {
-                Produto.insert(produto)
-                    .then(function(data) { })
-                    .catch(function(error) { });
+        // $timeout evita erros em $apply e $digest quando trabalhando com angular route.
+        $timeout(function() {
+            $scope.$apply(function() {
+                try {
+                    Produto.insert(produto)
+                        .then(function(data) { })
+                        .catch(function(error) { });
 
-                Produto.update(produto)
-                    .then(function(data) { })
-                    .catch(function(error) { });
+                    Produto.update(produto)
+                        .then(function(data) { })
+                        .catch(function(error) { });
 
-                Produto.delete(produto.id)
-                    .then(function(data) { })
-                    .catch(function(error) { });
+                    Produto.delete(produto.id)
+                        .then(function(data) { })
+                        .catch(function(error) { });
 
-                Produto.select()
-                    .then(function(data) { })
-                    .catch(function(error) {  });
-            
-            } catch (error) {
+                    Produto.select()
+                        .then(function(data) { })
+                        .catch(function(error) {  });
+                
+                } catch (error) {
 
-            }
+                }
+            });
         });
     });
 });
@@ -107,6 +110,8 @@ mymodule.controller('teste', function($scope, $colite, Produto) {
 
 ### Versões ###
 
+* 1.0.12:
+    - Atualização da documentação.
 * 1.0.11:
     - Bugfix.
 * 1.0.10:
